@@ -8,43 +8,51 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 
-const vidUrl = {
-  VID960: "containers-960x540.mp4",
-  VID1280: "containers-1280x720.mp4",
-  VID1920: "containers-1920x1080.mp4",
-  VID2560: "containers-2560x1440.mp4",
-};
+// const vidUrl = {
+//   VID960: "containers-960x540.mp4",
+//   VID1280: "containers-1280x720.mp4",
+//   VID1920: "containers-1920x1080.mp4",
+//   VID2560: "containers-2560x1440.mp4",
+// };
 
-const getVideoSource = (width) => {
-  if (width < 1280) {
-    return vidUrl.VID960;
-  } else if (width < 1920) {
-    return vidUrl.VID1280;
-  } else if (width < 2560) {
-    return vidUrl.VID1920;
-  } else {
-    return vidUrl.VID2560;
-  }
-};
+// const getVideoSource = (width) => {
+//   if (width < 1280) {
+//     return vidUrl.VID960;
+//   } else if (width < 1920) {
+//     return vidUrl.VID1280;
+//   } else if (width < 2560) {
+//     return vidUrl.VID1920;
+//   } else {
+//     return vidUrl.VID2560;
+//   }
+// };
 
 const HeroVideo = ({ className }) => {
-  const [src, setSrc] = useState(vidUrl.VID960);
+  // const [src, setSrc] = useState(vidUrl.VID960);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setSrc(getVideoSource(window.innerWidth));
-    };
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setSrc(getVideoSource(window.innerWidth));
+  //   };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
+  //   handleResize();
+  //   window.addEventListener("resize", handleResize);
 
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
+  //   return () => {
+  //     window.removeEventListener("resize", handleResize);
+  //   };
+  // }, []);
 
   return (
     <div className={cn("relative w-full h-full   ", className)}>
+      <Image
+        src={"/hero.jpg"}
+        alt="asd"
+        width={1000}
+        height={500}
+        className={"relative object-cover w-full  h-[80vh] md:max-h-[70vh]"}
+        priority
+      />
       {/* <Image
         src={"/hero.jpg"}
         alt="asd"
@@ -54,7 +62,7 @@ const HeroVideo = ({ className }) => {
         priority
       />
       <div className="absolute top-0 left-0 z-10 w-full h-full bg-gradient-to-br from-black/5 via-black/50 to-transparent"></div> */}
-      <video
+      {/* <video
         key={src}
         className={"relative object-cover w-full h-[80vh] lg:h-[80vh]"}
         autoPlay
@@ -62,7 +70,7 @@ const HeroVideo = ({ className }) => {
         muted
       >
         <source src={src} type="video/mp4" />
-      </video>
+      </video> */}
       <div className="absolute top-0 left-0 z-10 w-full h-full bg-gradient-to-r from-black/70 to-black/70"></div>
       {/* <div className="absolute top-0 left-0 z-10 w-full h-full bg-gradient-to-br from-black/5 via-black/50 to-transparent"></div> */}
       {/* <div className="absolute top-50 left-50 z-10 transform -translate-x-1/2 -translate-y-1/2 w-60% h-60% bg-gradient-to-br from-black/5 via-black/50 to-transparent"></div> */}
